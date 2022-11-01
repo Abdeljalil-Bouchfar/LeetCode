@@ -1,14 +1,12 @@
 class Solution {
 public:
-    int singleNumber(vector<int>& arr) {
-        int n = arr.size(); // extracting the size of the array
-        
-        // traverse from the array
-        for(int i = 0; i < n - 1; i++)
+    int singleNumber(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size(); i++)
         {
-            arr[i + 1] = arr[i] ^ arr[i + 1]; // (prev answer xor current index)
+            if ((i == 0 || nums[i - 1] != nums[i]) && (i + 1 == nums.size() || nums[i + 1] != nums[i]))
+                return nums[i];
         }
-        
-        return arr[n- 1]; // return left over element
+        return 0;
     }
 };
