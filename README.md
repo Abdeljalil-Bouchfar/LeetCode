@@ -1,2 +1,6 @@
 # LeetCode
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub)
+![](https://badges.peiyuan.ch/leetcode/Abdeljalil-Bouchfar/ranking)
+![](https://badges.peiyuan.ch/leetcode/Abdeljalil-Bouchfar/submission?accepted=true)
+![](https://badges.peiyuan.ch/leetcode/Abdeljalil-Bouchfar/submission?accepted=true&difficulty=easy)
+![](https://badges.peiyuan.ch/leetcode/Abdeljalil-Bouchfar/submission?accepted=true&difficulty=medium)
+![](https://badges.peiyuan.ch/leetcode/Abdeljalil-Bouchfar/submission?accepted=true&difficulty=hard)
