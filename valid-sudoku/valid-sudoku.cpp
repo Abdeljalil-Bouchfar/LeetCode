@@ -13,11 +13,11 @@ public:
                 if (board[c][r] != '.')
                     column[board[c][r] - '0']++;
             }
+            
             for (int i = 0; i < 10; i++)
-            {
                 if (row[i] > 1 || column[i] > 1)
                     return false;
-            }
+
         }
 
         for (int r = 3; r <= 9; r+=3)
