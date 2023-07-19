@@ -1,28 +1,13 @@
 class Solution {
 public:
     int maxVowels(string s, int k) {
-        string vowl = "aeiou";
-        int max = 0;
-        int tm = -1;
+        int ans = 0, curr = 0;
         for(int i = 0; i < s.length();i++)
         {
-            if (tm == -1 && vowl.find(s[i]) != -1)
-            {
-                tm = 0;
-                for(int j = 0; j < k && j + i < s.length(); j++)
-                    if (vowl.find(s[i + j]) != -1)
-                        tm++;
-                i += k;
-                max = tm;
-            }
-            if (tm != -1)
-            {
-                tm -= (vowl.find(s[i - k]) != -1);
-                tm += (vowl.find(s[i]) != -1);
-            }
-            if (tm > max)
-                max = tm;
+            curr += s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u';
+            curr -= i >= k && (s[i - k] == 'a' || s[i - k] == 'e' || s[i - k] == 'i' || s[i - k] == 'o' || s[i - k] == 'u');
+            ans = max(ans, curr);
         }
-        return max;
+        return ans;
     }
 };
