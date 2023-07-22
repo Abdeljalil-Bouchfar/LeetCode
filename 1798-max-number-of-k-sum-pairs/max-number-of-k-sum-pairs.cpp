@@ -15,7 +15,6 @@ public:
                 e--;
             else
                 s++;
-           // cout << s << ' ' << e << " -> "; 
         }
         return ans;
     }
