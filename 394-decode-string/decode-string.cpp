@@ -24,6 +24,3 @@ public:
         return ans;
     }
 };
-// 3, ""
-// 2, "a"
-// tmp = c
