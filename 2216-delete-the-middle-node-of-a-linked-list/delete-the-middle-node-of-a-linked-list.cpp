@@ -23,11 +23,7 @@ public:
         for (int i = 1; i < size / 2; i++)
             tmp = tmp->next;
         
-        ListNode* pre = tmp;
-        for (int i = 0; i < 2 && tmp; i++)
-            tmp = tmp->next;
-        
-        pre->next = tmp;
+        tmp->next = tmp->next->next;
         return head;
     }
 };
