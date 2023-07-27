@@ -12,12 +12,14 @@ class Solution {
 public:
     int pairSum(ListNode* head) {
         ListNode* tmp = head;
-        vector<int> nbr;
+        int nbr[100000];
+        int j = 0;
         while (tmp)
-            nbr.push_back(tmp->val), tmp = tmp->next;
+            nbr[j++] = tmp->val, tmp = tmp->next;
 
         int ans = 0;
-        for (int i = 0, j = nbr.size() -1; i < j; i++, j--)
+        j--;
+        for (int i = 0; i < j; i++, j--)
             ans = max(ans, nbr[i] + nbr[j]);
         
         return ans;
