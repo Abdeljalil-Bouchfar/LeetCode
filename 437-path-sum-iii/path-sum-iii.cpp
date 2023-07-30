@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    int subSum(TreeNode* root, int targetSum, long long prefix)
+    int subSum(TreeNode* root, int &targetSum, long long prefix)
     {
         if (root == nullptr)
             return 0;
