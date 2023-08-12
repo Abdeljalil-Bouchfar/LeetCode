@@ -8,10 +8,10 @@ public:
         int i = 0;
         while (iss >> word)
         {
-            if (i == pattern.size() || (a.count(pattern[i]) && a[pattern[i]] != word) || (p.count(word) && p[word] != pattern[i]))
+            if (i == pattern.size() || (a.count(pattern[i]) && a[pattern[i]] != word)
+                                    || (p.count(word) && p[word] != pattern[i]))
                 return false;
-            p[word] = pattern[i];
-            a[pattern[i++]] = word;
+            p[word] = pattern[i], a[pattern[i++]] = word;
         }
         return i == pattern.size();
     }
