@@ -9,7 +9,6 @@ public:
         for (int i = 0; i < word1.size(); i++)
             arr1[word1[i] - 'a']++, arr2[word2[i] - 'a']++;
         
-
         for (int i = 0; i < word1.size(); i++)
             if (arr2[word1[i] - 'a'] == 0 || arr1[word2[i] - 'a'] == 0)
                 return false;
@@ -21,16 +20,6 @@ public:
             if (arr1[i] != arr2[i])
                 return false;
 
-        // if (word1 != word2)
-        // {
-
-        //     for (int i = 0; i < word1.size(); i++)
-        //         arr1[word1[i] - 'a']++, arr2[word2[i] - 'a']++;
-            
-        //     for (int i = 0; i < word1.size(); i++)
-        //         if (arr2[word1[i] - 'a'] == 0 || arr1[word2[i] - 'a'] == 0)
-        //             return false;
-        // }
         return true;
     }
 };
