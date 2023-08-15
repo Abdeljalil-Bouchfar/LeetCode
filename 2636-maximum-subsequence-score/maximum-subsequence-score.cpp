@@ -14,7 +14,7 @@ public:
         for (int i = 0; i < vec.size(); i++)
         {
             if (i >= k - 1)
-                ans = max(ans, ((sum + vec[i].second) * vec[i].first));
+                ans = max(ans, (sum + vec[i].second) * vec[i].first);
             
             pq.push(vec[i].second);
             sum += vec[i].second;
