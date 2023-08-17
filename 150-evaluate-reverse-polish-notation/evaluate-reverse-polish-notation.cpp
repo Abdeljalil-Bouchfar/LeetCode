@@ -2,9 +2,9 @@ class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
         stack<int> st;
+        int n1, n2;
         for (string &s : tokens)
         {
-            int n1, n2;
             if (s.size() == 1 && !isdigit(s[0]))
             {
                 n1 = st.top(), st.pop();
