@@ -10,7 +10,7 @@ public:
             while (s <= e)
             {
                 int mid = s + ((e - s) / 2);
-                if (mid >= 0 && mid < n && (long long)potions[mid] * spells[j] < success)
+                if (mid < n && (long long)potions[mid] * spells[j] < success)
                     s = mid + 1;
                 else
                     e = mid - 1;
