@@ -8,19 +8,13 @@ public:
 
         return (th <= h);
     }
-        
     
     int minEatingSpeed(vector<int>& piles, int h) {
         int s = 1, e = *max_element(piles.begin(), piles.end());
-        int ans = 0;
         while (s <= e)
         {
             int mid = s + (e - s) / 2;
-            if (ispossible(piles, mid, h))
-            {
-                e = mid - 1;
-                ans = min(e, mid);
-            }
+            if (ispossible(piles, mid, h)) e = mid - 1;
             else s = mid + 1;
         }
         return s;
