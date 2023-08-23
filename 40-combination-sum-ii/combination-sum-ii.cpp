@@ -7,7 +7,7 @@ public:
         if (total == tr) ans.push_back(comps);
         else if (total < tr)
         {
-            while (i < n)
+            while (i < n && total + candidates[i] <= tr)
             {
                 vector<int> tmp = comps;
                 tmp.push_back(candidates[i]);
