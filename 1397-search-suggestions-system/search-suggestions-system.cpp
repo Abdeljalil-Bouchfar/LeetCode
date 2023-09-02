@@ -51,13 +51,18 @@ public:
         //     }
         // }
         sort(products.begin(), products.end());
-        for (int j = 0; j < searchWord.size(); ++j)
+        string curr;
+        for (int j = 0, i= 0; j < searchWord.size(); ++j)
         {
             ans.push_back({});
-            for (int i = 0; i < products.size() && ans.back().size() < 3; ++i)
+            curr += searchWord[j];
+            i = (lower_bound(products.begin(), products.end(), curr) - products.begin());
+            while (i < products.size() && ans.back().size() < 3)
             {
-                if (products[i].substr(0, j + 1) == searchWord.substr(0, j + 1))
-                    ans.back().push_back(products[i]);
+                if (products[i].substr(0, j + 1) == curr)
+                    ans.back().push_back(products[i++]);
+                else
+                    break;
             }                
         }
         return ans;
