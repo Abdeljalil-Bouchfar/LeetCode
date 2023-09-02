@@ -33,7 +33,8 @@ public:
         // Node *root = new Node;
         // fillTrie(products, root);
 
-        vector<vector<string>> ans;
+        int n = searchWord.size();
+        vector<vector<string>> ans(n);
         // Node *curr = root, *tmp = nullptr;
         // for (char &c : searchWord)
         // {
@@ -51,15 +52,12 @@ public:
         //     }
         // }
         sort(products.begin(), products.end());
-        string curr;
-        for (int j = 0; j < searchWord.size(); ++j)
+        for (int j = 0; j < n; ++j)
         {
-            curr += searchWord[j];
-            ans.push_back({});
-            for (int i = 0; i < products.size() && ans.back().size() < 3; ++i)
+            for (int i = 0; i < products.size() && ans[j].size() < 3; ++i)
             {
-                if (products[i].substr(0, j + 1) == curr)
-                    ans.back().push_back(products[i]);
+                if (products[i].substr(0, j + 1) == searchWord.substr(0, j + 1))
+                    ans[j].push_back(products[i]);
             }                
         }
         return ans;
