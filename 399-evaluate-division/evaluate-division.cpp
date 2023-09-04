@@ -6,14 +6,14 @@ public:
     void solve(string curr, string target, double tmp, unordered_map<string, bool> vis)
     {
         if (curr == target)
-            res = tmp;
-        else
         {
-            vis[curr] = true;
-            for (auto p : dir[curr])
-                if (!vis[p.first])
-                    solve(p.first, target, tmp * p.second, vis);
+            res = tmp;
+            return;
         }
+        vis[curr] = true;
+        for (auto p : dir[curr])
+            if (!vis[p.first])
+                solve(p.first, target, tmp * p.second, vis);
     }
 
     vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries) {
