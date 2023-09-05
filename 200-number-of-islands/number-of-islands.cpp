@@ -1,33 +1,36 @@
 class Solution {
 public:
-    int n, m;
-    const vector<vector<int>> dr = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-    void bfs(int &i, int &j, vector<vector<char>>& grid)
-    {
+    int numIslands(vector<vector<char>>& grid) {
+        int n = grid.size(), m = grid.front().size(), ans = 0;
+        
         queue<pair<int, int>> qu;
-        qu.push({i, j});
-        grid[i][j] = '1';
+        int ti, tj;
+        pair<int, int> tp;
+        const vector<vector<int>> dr = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
-        while(!qu.empty())
+        for(int i = 0; i < n; ++i)
         {
-            pair<int, int> p = qu.front();
-            qu.pop();
-            for (auto &v : dr)
+            for(int j = 0; j < m; ++j)
             {
-                int ti = p.first + v[0], tj = p.second + v[1];
-                if (ti >= 0 && tj >= 0 && ti < n && tj < m && grid[ti][tj] == '1')
-                    qu.push({ti, tj}), grid[ti][tj] = '0';
+                if (grid[i][j] == '1')
+                {
+                    qu.push({i, j});
+                    grid[i][j] = '1';
+                    while(!qu.empty())
+                    {
+                        tp = qu.front();
+                        qu.pop();
+                        for (auto &v : dr)
+                        {
+                            ti = tp.first + v[0], tj = tp.second + v[1];
+                            if (ti >= 0 && tj >= 0 && ti < n && tj < m && grid[ti][tj] == '1')
+                                qu.push({ti, tj}), grid[ti][tj] = '0';
+                        }
+                    }
+                    ++ans;
+                }
             }
         }
-    }
-    int numIslands(vector<vector<char>>& grid) {
-        n = grid.size(), m = grid.front().size();
-        int ans = 0;
-        
-        for(int i = 0; i < n; ++i)
-            for(int j = 0; j < m; ++j)
-                if (grid[i][j] == '1')
-                    ++ans, bfs(i, j, grid);
         return ans;
     }
 };
