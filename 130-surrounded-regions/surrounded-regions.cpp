@@ -3,6 +3,7 @@ public:
     void solve(vector<vector<char>>& board) {
         int n = board.size(), m = board.front().size();
         queue<pair<int, int>> qu;
+        vector<pair<int, int>> os;
         pair<int, int> tp;
         const int dr[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
         int visited[201][201] = {0};
@@ -12,11 +13,11 @@ public:
             {
                 if (board[i][j] == 'O' && !visited[i][j] && i && j && i + 1 != n && j + 1 != m)
                 {
-                    stack<pair<int, int>> os;
+                    os.resize(0);
                     visited[i][j] = 1;
                     bool surrounded = true;
                     qu.push({i, j});
-                    os.push({i, j});
+                    os.push_back({i, j});
                     while (!qu.empty())
                     {
                         tp = qu.front();
@@ -27,13 +28,13 @@ public:
                             if (ti < 0 || tj < 0 || ti >= n || tj >= m)
                                 surrounded = false;
                             else if (board[ti][tj] == 'O' && !visited[ti][tj])
-                                qu.push({ti, tj}), os.push({ti, tj}), visited[ti][tj] = 1;
+                                qu.push({ti, tj}), os.push_back({ti, tj}), visited[ti][tj] = 1;
                         }
                     }
-                    while (surrounded && !os.empty())
+                    if (surrounded)
                     {
-                        board[os.top().first][os.top().second] = 'X';
-                        os.pop();
+                        for (auto &v : os)
+                            board[v.first][v.second] = 'X';
                     }
                 }
             }
