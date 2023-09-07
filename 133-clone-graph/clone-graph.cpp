@@ -23,7 +23,6 @@ class Solution {
 public:
     Node* cloneGraph(Node* node) {
         queue<Node*> qu;
-        vector<Node*> origins;
         vector<Node*> clones(101, nullptr);
 
         if (node)
@@ -35,10 +34,8 @@ public:
             tmp = qu.front();
             qu.pop();
             if (!clones[tmp->val])
-            {
-                origins.push_back(tmp);
                 clones[tmp->val] = new Node(tmp->val);
-            }
+            
             for (auto &n : tmp->neighbors)
             {
                 if (!clones[n->val])
@@ -49,11 +46,6 @@ public:
                 clones[tmp->val]->neighbors.push_back(clones[n->val]);
             }
         }
-        // for (auto &n : origins)
-        // {
-        //     for (auto &t : n->neighbors)
-        //         clones[n->val]->neighbors.push_back(clones[t->val]);
-        // }
         return clones[1];
     }
 };
