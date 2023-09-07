@@ -40,14 +40,20 @@ public:
                 clones[tmp->val] = new Node(tmp->val);
             }
             for (auto &n : tmp->neighbors)
+            {
                 if (!clones[n->val])
+                {
+                    clones[n->val] = new Node(n->val);
                     qu.push(n);
+                }
+                clones[tmp->val]->neighbors.push_back(clones[n->val]);
+            }
         }
-        for (auto &n : origins)
-        {
-            for (auto &t : n->neighbors)
-                clones[n->val]->neighbors.push_back(clones[t->val]);
-        }
+        // for (auto &n : origins)
+        // {
+        //     for (auto &t : n->neighbors)
+        //         clones[n->val]->neighbors.push_back(clones[t->val]);
+        // }
         return clones[1];
     }
 };
