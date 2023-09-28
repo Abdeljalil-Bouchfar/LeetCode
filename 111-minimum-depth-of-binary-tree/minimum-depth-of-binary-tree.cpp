@@ -13,19 +13,20 @@ class Solution {
 public:
     int minDepth(TreeNode* root) {
         int ans = 0;
-        queue<pair<TreeNode*, int>> qu;
-        if (root) qu.push({root, 1});
+        queue<TreeNode*> qu;
+        if (root) qu.push(root);
         while (!qu.empty())
         {
-            pair<TreeNode*, int> p = qu.front();
-            qu.pop();
-            if (!p.first->left && !p.first->right)
+            ans++;
+            int n = qu.size();
+            while (n--)
             {
-                ans = p.second;
-                break;
+                TreeNode* tmp = qu.front();
+                qu.pop();
+                if (!tmp->left && !tmp->right) return ans;
+                if (tmp->left) qu.push(tmp->left);
+                if (tmp->right) qu.push(tmp->right);
             }
-            if (p.first->left) qu.push({p.first->left, p.second + 1});
-            if (p.first->right) qu.push({p.first->right, p.second + 1});
         }
         return ans;
     }
