@@ -1,6 +1,7 @@
 class Solution {
 public:
     string largestOddNumber(string num) {
+        if (num.back() % 2) return num;
         int j = 0;
         for (int i = 0; i < num.size(); ++i)
         {
