@@ -18,10 +18,8 @@ public:
             fast = fast->next;
 
         while (fast)
-        {
-            fast = fast->next;
-            slow = slow->next;
-        }
+            fast = fast->next, slow = slow->next;
+        
         slow->next = slow->next->next;
         return tmp.next;
     }
